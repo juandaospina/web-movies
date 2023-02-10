@@ -1,0 +1,15 @@
+.input-search {
+  width: 400px;
+  height: 12px;
+  padding: 1rem;
+  border-radius: 25px;
+  border: 1px solid #cacfd2;
+  outline: none;
+  background-color: white;
+  color: black;
+}
+
+.icons-navigation {
+  display: flex;
+  gap: 6px;
+}

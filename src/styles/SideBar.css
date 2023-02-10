@@ -1,0 +1,36 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  list-style: none;
+  margin-top: 3rem;
+}
+
+.menu-item {
+  width: 10rem;
+  padding: 0.8rem;
+  border: 2px solid #f2f4f9;
+  border-radius: 10px;
+}
+
+.active {
+  width: 10rem;
+  padding: 0.8rem;
+  background-color: #f2f4f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px #dbdbdb;
+}
+
+li > a {
+  font-family: system-ui;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+}

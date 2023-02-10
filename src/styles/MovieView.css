@@ -1,0 +1,38 @@
+.container-view {
+    padding: .5rem;
+  }
+  
+  .container-view h3, .categories, span, h4 {
+    font-family: system-ui;
+  }
+  
+ .content-view img {
+    width: 20rem;
+    height: 30rem;
+    z-index: 1;
+    border-radius: 8px;
+ }
+
+ .movie-info {
+    display: flex;
+    flex-direction: column;
+ }
+
+ .categories {
+    display: flex;
+    gap: 0.8rem;
+ }
+
+ .overview {
+    width: 80%;
+ }
+  
+  .content-view {
+    display: flex;
+    width: 95%;
+    height: 35rem;
+    padding: .6rem;
+    gap: 2rem;
+    border-radius: 8px;
+    background-color: #F2F4F9;
+  }
