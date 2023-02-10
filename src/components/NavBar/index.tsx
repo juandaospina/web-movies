@@ -1,9 +1,8 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { GrNotification, GrChat } from "react-icons/gr";
 import { MenuOutlined } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
 
 import profile from "../../assets/men.png";
 import "../../styles/NavBar.css";
@@ -13,18 +12,6 @@ interface Props {
 }
 
 export const Navbar: FC<Props> = ({ width }) => {
-  const navigate = useNavigate();
-  const [query, setQuery] = useState<string>();
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setQuery(value);
-  };
-
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    return navigate(`/movies/search/${query}`);
-  };
-
   return (
     <AppBar
       position="fixed"
@@ -64,16 +51,14 @@ export const Navbar: FC<Props> = ({ width }) => {
             Películas
           </Typography>
 
-          <form onSubmit={handleSubmit}>
-            <input
+          {/* <input
               name="search"
               type="text"
-              // value={search}
+              value={query}
               onChange={handleChange}
               className="input-search"
               placeholder="Search movie..."
-            />
-          </form>
+            /> */}
 
           <div className="icons-navigation">
             <IconButton color="primary">

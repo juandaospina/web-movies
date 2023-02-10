@@ -6,13 +6,25 @@ import { Result } from "../../types";
 import { CardFilm } from "../../components/CardFilm";
 import { getPopularMovies } from "../../services";
 import "../../styles/PopularMovies.css";
+import { useSearch } from "../../hooks/useSearch";
+import { useSearchMovie } from "../../hooks/useSearchMovie";
 
 export const ListPopularMovies = () => {
   const [popularMovies, setPopularMovies] = useState<Result[]>([]);
   const [topRatedMovies, setTopRatedMovies] = useState<Result[]>([]);
   const [seletedItem, setSeletedItem] = useState<string>("popular");
 
-  const handleSeletetedChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const { query, setQuery } = useSearch();
+  const { data } = useSearchMovie(query);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setQuery(value);
+  };
+
+  const handleSeletetedChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const { value } = event.target;
     setSeletedItem(value);
   };
@@ -46,7 +58,17 @@ export const ListPopularMovies = () => {
             <option value="popular">Populares</option>
             <option value="top_rated">Top films</option>
           </select>
+
+          <input
+            name="search"
+            type="text"
+            value={query}
+            onChange={handleChange}
+            className="input-search"
+            placeholder="Search movie..."
+          />
         </div>
+
         <div className="container-films">
           {popularMovies.map((movie) => (
             <CardFilm key={movie.id} movie={movie} />
@@ -54,14 +76,19 @@ export const ListPopularMovies = () => {
         </div>
       </section>
 
-      <section>
-        <div className="nav-select-items"></div>
+      {data.length > 0 ? (
+        <div className="container-films">
+          {data.map((movie) => (
+            <CardFilm key={movie.id} movie={movie} />
+          ))}
+        </div>
+      ) : (
         <div className="container-films">
           {topRatedMovies.map((movie) => (
             <CardFilm key={movie.id} movie={movie} />
           ))}
         </div>
-      </section>
+      )}
     </Grid>
   );
 };
